@@ -33,9 +33,9 @@ describe 'Invoice record endpoints' do
 
         raw_info = JSON.parse(response.body, symbolize_names: true)
 
-        expect(raw_info[:data][0][:id]).to eq("#{invoice_1.id}")
+        expect(raw_info[:data][:id]).to eq("#{invoice_1.id}")
 
-        expect(raw_info[:data][0][:attributes][:merchant_id]).to eq("#{invoice_1.merchant_id}".to_i)
+        expect(raw_info[:data][:attributes][:merchant_id]).to eq("#{invoice_1.merchant_id}".to_i)
     end 
 
     it 'can find all invoices by request params' do
@@ -67,6 +67,6 @@ describe 'Invoice record endpoints' do
 
         raw_info = JSON.parse(response.body, symbolize_names: true)
         
-        expect(raw_info[:data][0][:attributes]).to_not be_empty
+        expect(raw_info[:data][:attributes]).to_not be_empty
     end 
 end 

@@ -21,7 +21,7 @@ describe 'Items record endpoints' do
         
         raw_info = JSON.parse(response.body, symbolize_names: true)
 
-        expect(raw_info[:data][0][:attributes][:name]).to eq("#{item.name}")
+        expect(raw_info[:data][:attributes][:name]).to eq("#{item.name}")
     end 
     it 'can find a single items by request params' do
         item_1 = create(:item)
@@ -33,9 +33,9 @@ describe 'Items record endpoints' do
 
         raw_info = JSON.parse(response.body, symbolize_names: true)
 
-        expect(raw_info[:data][0][:id]).to eq("#{item_1.id}")
+        expect(raw_info[:data][:id]).to eq("#{item_1.id}")
 
-        expect(raw_info[:data][0][:attributes][:name]).to eq("#{item_1.name}")
+        expect(raw_info[:data][:attributes][:name]).to eq("#{item_1.name}")
     end 
 
     it 'can find all items by request params' do
@@ -67,6 +67,6 @@ describe 'Items record endpoints' do
 
         raw_info = JSON.parse(response.body, symbolize_names: true)
         
-        expect(raw_info[:data][0][:attributes]).to_not be_empty
+        expect(raw_info[:data][:attributes]).to_not be_empty
     end 
 end 

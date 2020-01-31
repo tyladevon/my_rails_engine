@@ -25,7 +25,7 @@ class Api::V1::InvoicesController < ApplicationController
     end 
 
     def random
-        invoice = Invoice.all.sample
+        invoice = Invoice.random
         serialized_invoice = InvoiceSerializer.new(invoice)
         render json: serialized_invoice
     end

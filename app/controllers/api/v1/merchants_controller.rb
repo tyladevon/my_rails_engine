@@ -6,7 +6,7 @@ class Api::V1::MerchantsController < ApplicationController
     end 
     
     def show
-        merchant = Merchant.find(params[:merch_id])
+        merchant = Merchant.find(params[:id])
         serialized_merchant = MerchantSerializer.new(merchant)
         render json: serialized_merchant
     end 
@@ -24,7 +24,7 @@ class Api::V1::MerchantsController < ApplicationController
     end 
 
     def random
-        merchant = Merchant.all.sample
+        merchant = Merchant.random
         serialized_merchant = MerchantSerializer.new(merchant)
         render json: serialized_merchant
     end 
@@ -32,6 +32,6 @@ class Api::V1::MerchantsController < ApplicationController
     private 
 
     def merch_params
-        params.permit(:merch_id, :name, :created_at, :updated_at)
+        params.permit(:id, :name, :created_at, :updated_at)
     end 
 end 
