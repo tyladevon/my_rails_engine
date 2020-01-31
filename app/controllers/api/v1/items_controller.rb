@@ -7,7 +7,7 @@ class Api::V1::ItemsController < ApplicationController
     end 
 
     def show
-        item = Item.where(params[:id])
+        item = Item.find(params[:id])
         serialized_items = ItemSerializer.new(item)
         render json: serialized_items
     end 
@@ -25,7 +25,7 @@ class Api::V1::ItemsController < ApplicationController
     end 
 
     def random
-        item = Item.all.sample
+        item = Item.random
         serialized_item = ItemSerializer.new(item)
         render json: serialized_item
     end

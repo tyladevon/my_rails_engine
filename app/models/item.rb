@@ -4,4 +4,5 @@ class Item < ApplicationRecord
                         :unit_price,
                         :merchant_id
   belongs_to :merchant 
+  before_save :change_unit_price
 end
