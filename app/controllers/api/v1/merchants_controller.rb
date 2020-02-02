@@ -29,6 +29,15 @@ class Api::V1::MerchantsController < ApplicationController
         render json: serialized_merchant
     end 
 
+    def most_revenue
+        joins(invoices: [:invoice_items, :transactions]).
+        select("merchants.*, sum(invoice_items.quantity * invoice_items.unit_price)as revenue").
+        group(:id).
+        where(transactions: {result: 'success'}).
+        order('revenue desc').
+        limit(quantity)
+    end 
+
     private 
 
     def merch_params
