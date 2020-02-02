@@ -33,7 +33,7 @@ describe 'Transactions record endpoints' do
 
         raw_info = JSON.parse(response.body, symbolize_names: true)
     
-        expect(raw_info[:data][:id]).to eq(transaction_1.id)
+        expect(raw_info[:data][:id].to_i).to eq(transaction_1.id)
 
         expect(raw_info[:data][:attributes][:invoice_id]).to eq(transaction_1.invoice_id)
     end 

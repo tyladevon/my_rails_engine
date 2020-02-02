@@ -5,5 +5,6 @@ class InvoiceItem < ApplicationRecord
                         :quantity,
                         :unit_price
   belongs_to :invoice
-  belongs_to :item                                     
+  belongs_to :item    
+  before_save :change_unit_price                                 
 end
