@@ -12,6 +12,6 @@ describe "Merchants Items Endpoint" do
 
         merchants = JSON.parse(response.body, symbolize_names: true)
 
-        expect(merchants[:data][0][:relationships][:items][:data].count).to eq(5)
+        expect(merchants[:data].count).to eq(5)
     end 
 end 
