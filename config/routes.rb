@@ -3,11 +3,34 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      namespace :merchants do 
+        get '/most_revenue', to: 'most_revenue#index'
+        get '/:id/items', to: 'items#index'
+        get '/:id/invoices', to: 'invoices#index'
+      end
+      namespace :invoices do 
+        get '/:id/transactions', to: 'transactions#index'
+        get '/:id/invoice_items', to: 'invoice_items#index'
+        get '/:id/items', to: 'items#index'
+        get '/:id/customer', to: 'customers#show'
+        get '/:id/merchant', to: 'merchants#show'
+      end 
+      namespace :invoice_items do 
+        get '/:id/invoice', to: 'invoices#show'
+        get '/:id/item', to: 'items#show'
+      end 
+      namespace :items do 
+        get '/:id/invoice_items', to: 'invoice_items#index'
+        get '/:id/merchant', to: 'merchants#show'
+      end 
+      namespace :transactions do 
+        get '/:id/invoice', to: 'invoices#show'
+      end 
       get '/merchants', to: 'merchants#index'
       get '/merchants/find', to: 'merchants#find'
       get '/merchants/find_all', to: 'merchants#find_all'
       get '/merchants/random', to: 'merchants#random'
-      get '/merchants/most_revenue', to: 'merchants#most_revenue'
+      # get '/merchants/most_revenue', to: 'merchants#most_revenue'
       get '/merchants/:id', to: 'merchants#show'
     
       get '/items', to: 'items#index'
@@ -39,30 +62,6 @@ Rails.application.routes.draw do
       get '/transactions/find_all', to: 'transactions#find_all'
       get '/transactions/random', to: 'transactions#random'
       get '/transactions/:id', to: 'transactions#show'
-
-      namespace :merchants do 
-        get '/:id/items', to: 'items#index'
-        get '/:id/invoices', to: 'invoices#index'
-      end
-
-      namespace :invoices do 
-        get '/:id/transactions', to: 'transactions#index'
-        get '/:id/invoice_items', to: 'invoice_items#index'
-        get '/:id/items', to: 'items#index'
-        get '/:id/customer', to: 'customers#show'
-        get '/:id/merchant', to: 'merchants#show'
-      end 
-      namespace :invoice_items do 
-        get '/:id/invoice', to: 'invoices#show'
-        get '/:id/item', to: 'items#show'
-      end 
-      namespace :items do 
-        get '/:id/invoice_items', to: 'invoice_items#index'
-        get '/:id/merchant', to: 'merchants#show'
-      end 
-      namespace :transactions do 
-        get '/:id/invoice', to: 'invoices#show'
-      end 
     end 
   end
 end 
